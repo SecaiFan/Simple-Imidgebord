@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Технач</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<div class='header'><a href="/">Главная</a></div>
+<div class="theme"><h1>Программирование</h1></div>
+<div class="container">
+    <div class="sidebar">
+        <p class="theme_list_header">Темы</p>
+        <ul class="sidebar_list">
+            <li>Gamedev</li>
+            <li>Комп. железо</li>
+            <li>Моб. устройства</li>
+            <li>Программирование</li>
+            <li>Радиотехника</li>
+            <li>Программы</li>
+            <li>Техника</li>
+            <li>Video Games</li>
+            <li>The Elder Scrolls</li>
+            <li>Виз-ые новеллы</li>
+            <li>Аниме</li>
+            <li>Манга</li>
+        </ul>
+    </div>
+    <div class="form_container">
+        <form class="add_post" method = "POST" action="">
+            <div class="post_theme">
+                <input type="text" size="30" maxlength="25" name="title" required placeholder="Theme">
+            </div>
+            <div class="post_text">
+                <input type="text" size="100"  name="text" required placeholder="Comment">
+            </div>
+            <div class="inp_send">
+                <div class="inp_act">
+                    <input type="submit" value="Send" >
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="content">
+        <div class="posts">
+            {{#each posts}}
+                <div class="post">
+                    <p><b>{{dataValues.title}}</b>  {{dataValues.createdAt}}</p>
+                    <p>{{dataValues.author}}</p>
+                    <p>{{dataValues.text}}</p>
+                    <p>{{dataValues.likes}}</p>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="footer">&copy; Everything</div>
+</div>
+</body>
+</html>

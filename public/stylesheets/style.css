@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Anonimus Pro, sans-serif; /* Шрифт на веб-странице */
+    font-size: 14pt;
+    background: #292929; /* Цвет фона */
+    color: #1eb400;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-size: 1.1em; /* Размер шрифта */
+    color: #1eb400; /* Цвет текста */
+    margin-top: 0; /* Отступ сверху */
+}
+.theme {
+    text-align: center;
+}
+.container {
+    width: available; /* Ширина слоя */
+    height: available;
+    margin: 0 auto;
+    /*margin: 0 auto;*/
+    background: #292929; /* Цвет фона левой колонки */
+}
+.header {
+    text-align: left; /* Выравнивание по центру */
+    /* Отступы вокруг текста */
+}
+a {
+    text-decoration: none;
+}
+
+.sidebar {
+    /*margin-top: 10px;*/
+    width: max-content; /* Ширина слоя */
+    padding: 0 10px; /* Отступы вокруг текста */
+    float: left; /* Обтекание по правому краю */
+    background: #494949;
+    position: sticky;
+    top: 0;
+}
+.form_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #373737;
+    border: 2px solid #494949;
+    border-radius: 10px;
+}
+.add_post {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 0px 0px 0px;
+}
+.input {
+
+}
+.inp_send {
+
+}
+.theme_list_header {
+
+}
+.content {
+    padding: 10px; /* Поля вокруг текста */
+    background: #373737; /* Цвет фона правой колонки */
+    overflow-y: auto;
+
+}
+.post {
+    border: 2px solid #494949;
+    border-radius: 10px;
+    padding: 5px 10px 0px 5px;
+}
+.footer {
+    margin-top: 100%;
+    background: #494949; /* Цвет фона подвала */
+    color: #fff; /* Цвет текста */
+    padding: 5px; /* Отступы вокруг текста */
+    clear: left; /* Отменяем действие float */
+}
