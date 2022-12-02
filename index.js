@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('./DB');
 const path = require('path');
+const postController = require('./controllers/postController.js');
 
 const PORT = process.env.PORT ?? 7000;
 
@@ -16,7 +17,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', router);
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 

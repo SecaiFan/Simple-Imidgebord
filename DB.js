@@ -9,7 +9,6 @@ module.exports = new Sequelize(
         host: process.env.DB_HOST,
         port: process.env.DB_PORT,
         dialectOptions: {
-            useUTC: false, //for reading from database
             dateStrings: true,
             typeCast: true
         },

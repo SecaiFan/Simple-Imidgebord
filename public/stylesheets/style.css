@@ -8,6 +8,7 @@ body {
     color: #1eb400;
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 h1 {
     font-size: 1.1em; /* Размер шрифта */
@@ -75,10 +76,29 @@ a {
     border-radius: 10px;
     padding: 5px 10px 0px 5px;
 }
+.show_more {
+    cursor:pointer;
+}
+.post_hidden {
+    border: 2px solid #494949;
+    border-radius: 10px;
+    padding: 5px 10px 0px 5px;
+    display: none;
+}
+.show_more:focus + .post_hidden{
+    display: block;
+}
+.show_more:hover {
+    font-weight: bold;
+}
+.like_btn {
+
+}
 .footer {
-    margin-top: 100%;
+    bottom: 0;
     background: #494949; /* Цвет фона подвала */
     color: #fff; /* Цвет текста */
     padding: 5px; /* Отступы вокруг текста */
     clear: left; /* Отменяем действие float */
+    z-index: 10;
 }

@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Технач</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <!--<script type="module">
+        import {numPages, changePage, nextPage, prevPage} from '../public/javascripts/pagination-script.js';
+        window.onload = function() {
+            changePage(1);
+        };
+    </script>-->
+    <script>
+        let countPrev = 0;
+        let countNext = 0;
+        function showMore(n) {
+            let arr = document.getElementsByClassName('post_hidden')
+            countNext = countPrev + n;
+            for(let i = countPrev; i < arr.length && i < countNext; i++) {
+                arr[i].setAttribute('style', 'display:block');
+            }
+            countPrev += n;
+        }
+    </script>
 </head>
 <body>
 <div class='header'><a href="/">Главная</a></div>
@@ -44,17 +62,24 @@
     </div>
     <div class="content">
         <div class="posts">
-            {{#each posts}}
-                <div class="post">
+            {{#each_upto posts n}}
                     <p><b>{{dataValues.title}}</b>  {{dataValues.createdAt}}</p>
                     <p>{{dataValues.author}}</p>
                     <p>{{dataValues.text}}</p>
                     <p>{{dataValues.likes}}</p>
-                </div>
-            {{/each}}
+                    <form action="/posts/likes" method="post">
+                        <input type="hidden"
+                               class="like_btn" onclick="this.disabled={{stat}};"
+                               value="{{dataValues.id}}"
+                               name="id"/>
+                        <input type="submit" name="id" value="Нравится" onclick="this.disabled={{stat}};"/>
+                    </form>
+            {{/each_upto}}
         </div>
+        <div class="show_more" onclick="showMore({{n}})">Показать больше</div>
     </div>
-    <div class="footer">&copy; Everything</div>
+    <div class="footer"></div>
 </div>
 </body>
+
 </html>
