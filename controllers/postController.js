@@ -42,6 +42,10 @@ class postController {
                     n: num,
                     layout: false,
                 });
+            } else {
+                return res.render('posts', {
+                    layout: false
+                });
             }
         } catch(e) {
             console.log(e);

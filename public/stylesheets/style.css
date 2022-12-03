@@ -18,6 +18,22 @@ h1 {
 .theme {
     text-align: center;
 }
+.nav_container {
+    width: available; /* Ширина слоя */
+    height: available;
+    margin: 0 auto;
+    /*margin: 0 auto;*/
+    background: #292929; /* Цвет фона левой колонки */
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.theme_list_header {
+    display: flex;
+    justify-content: center;
+}
 .container {
     width: available; /* Ширина слоя */
     height: available;
@@ -57,10 +73,42 @@ a {
     margin: 0px 0px 0px 0px;
 }
 .input {
-
+    padding: 5px 0px 0px 0px;
+}
+.input [type="text"] {
+    width: 400px;
+    height: 30px;
+    position:relative;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background: #C7C7C7;
+    outline: none;
+}
+textarea.text {
+    width: 400px;
+    height: 60px;
+    position:relative;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background: #C7C7C7;
+    outline: none;
+}
+.input [type="textarea"] {
+    width: 400px;
+    height: 70px;
+    position:relative;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background: #C7C7C7;
+    outline: none;
 }
 .inp_send {
-
+    position: relative;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0px 10px 0px;
 }
 .theme_list_header {
 
@@ -102,3 +150,35 @@ a {
     clear: left; /* Отменяем действие float */
     z-index: 10;
 }
+
+input[type="submit"] {
+    width: 110px;
+    height: 35px;
+    border-radius: 5px;
+    background: #00c225;
+    color: whitesmoke;
+    font: bolder 15pt Cambria;
+    text-align: center;
+}
+input[type="text"]:hover {
+    border: 2px solid #00c225;
+}
+input[type="text"]:focus {
+    border: 2px solid #00c225;
+}
+textarea.text:hover {
+    border: 2px solid #00c225;
+}
+textarea.text:focus {
+    border: 2px solid #00c225;
+}
+input[type="submit"]:hover {
+    background: #1de540;
+    cursor: pointer;
+}
+input[type="submit"]:focus {
+    background: #1de540;
+    cursor: default;
+}
+
+

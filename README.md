@@ -22,15 +22,15 @@
 Имеется два вида страниц: главная страница сайта(навигация), лента с заметками
 1. Страница навигации
 
-![login_page](pictures/Login_page.png)
+![navigation_user_side](pictures/navigation_user_side.png)
 
 2. Лента заметок
 
-![reg_page](pictures/Registration_page.png)
+![posts_user_side](pictures/posts_user_side.png)
 
-3. Главная страница сайта
+3. Кнопка раскрытия заметок
 
-![greet_page](pictures/User_greeting_page.png)
+![show_more_user_side](pictures/show_more_user_side.png)
 
 ## Пользовательские сценарии работы
 1. При вводе в адресной строке "/" выводится меню навигации, где у пользователя есть возможность выбрать тему обсуждения 

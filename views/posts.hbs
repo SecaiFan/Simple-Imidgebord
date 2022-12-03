@@ -47,11 +47,13 @@
     </div>
     <div class="form_container">
         <form class="add_post" method = "POST" action="">
-            <div class="post_theme">
-                <input type="text" size="30" maxlength="25" name="title" required placeholder="Theme">
-            </div>
-            <div class="post_text">
-                <input type="text" size="100"  name="text" required placeholder="Comment">
+            <div class="input">
+                <div class="post_theme">
+                    <input type="text" size="30" maxlength="25" name="title" required placeholder="Theme">
+                </div>
+                <div class="post_text">
+                    <textarea class="text" rows="10" cols="25" name="text" required placeholder="Comment"></textarea>
+                </div>
             </div>
             <div class="inp_send">
                 <div class="inp_act">
@@ -66,13 +68,15 @@
                     <p><b>{{dataValues.title}}</b>  {{dataValues.createdAt}}</p>
                     <p>{{dataValues.author}}</p>
                     <p>{{dataValues.text}}</p>
-                    <p>{{dataValues.likes}}</p>
                     <form action="/posts/likes" method="post">
                         <input type="hidden"
                                class="like_btn" onclick="this.disabled={{stat}};"
                                value="{{dataValues.id}}"
                                name="id"/>
-                        <input type="submit" name="id" value="Нравится" onclick="this.disabled={{stat}};"/>
+                        <input type="submit"
+                               name="id"
+                               value="Нравится"
+                               onclick="this.disabled={{stat}};"/> {{dataValues.likes}}
                     </form>
             {{/each_upto}}
         </div>
