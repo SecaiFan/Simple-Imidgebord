@@ -104,8 +104,11 @@ async incLikes(req, res) {
         let {num} = req.body;
         num = num ?? 10;
         const {id} = req.body;
-        const likePost = await Posts.findOne({where: {id: id}});
-        await likePost.increment("likes");
+        let [postId, value] = id;
+        postId = +postId;
+        value = value.toLowerCase()+'s';
+        const likePost = await Posts.findOne({where: {id: postId}});
+        await likePost.increment(value);
         const somePosts = await Posts.findAll({
             order: [['createdAt', 'DESC']]
         });
