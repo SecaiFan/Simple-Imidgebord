@@ -7,11 +7,13 @@ const Posts = sequelize.define('post', {
     title: {type: DataTypes.STRING, required: true},
     text: {type: DataTypes.STRING, required: true},
     likes:{type: DataTypes.INTEGER, defaultValue: 0},
+    dislikes:{type: DataTypes.INTEGER, defaultValue: 0},
     picture:{type: DataTypes.STRING}
 });
 
 const Comments = sequelize.define('comments', {
     id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    author: {type: DataTypes.STRING, defaultValue: 'Аноним'},
     text:{type: DataTypes.STRING, required: true}
 });
 

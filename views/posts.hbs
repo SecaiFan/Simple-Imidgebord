@@ -16,6 +16,24 @@
             }
             countPrev += n;
         }
+        function showHidePostForm(id) {
+            let postForm = document.getElementById(id);
+            let annotS = document.getElementById(`showForm${id}`);
+            let annotH = document.getElementById(`hideForm${id}`);
+            postForm.style.display = (postForm.style.display === 'block') ? 'none':'block'
+            annotS.style.display = (annotS.style.display === 'block') ? 'none':'block'
+            annotH.style.display = (annotH.style.display === 'block') ? 'none':'block'
+        }
+        function showHideComments(id) {
+            let arr = document.getElementsByClassName(id);
+            let comS = document.getElementById(`sCom${id}`);
+            let comH = document.getElementById(`hCom${id}`);
+            for(let i = 0; i < arr.length; i++) {
+                arr[i].style.display = (arr[i].style.display === 'block') ? 'none' : 'block';
+            }
+            comS.style.display = (comS.style.display === 'block') ? 'none':'block'
+            comH.style.display = (comH.style.display === 'block') ? 'none':'block'
+        }
     </script>
 </head>
 <body>
@@ -46,7 +64,7 @@
                     <input type="text" size="30" maxlength="25" name="title" required placeholder="Theme">
                 </div>
                 <div class="post_text">
-                    <textarea class="text" rows="10" cols="25" name="text" required placeholder="Comment"></textarea>
+                    <textarea class="text" rows="10" cols="25" name="text" required placeholder="Text"></textarea>
                 </div>
             </div>
             <div class="inp_send">
@@ -62,17 +80,65 @@
                     <p><b>{{dataValues.title}}</b>  {{dataValues.createdAt}}</p>
                     <p>{{dataValues.author}}</p>
                     <p>{{dataValues.text}}</p>
-                    <form action="/posts/likes" method="post">
-                        <input type="hidden"
-                               class="like_btn" onclick="this.disabled={{stat}};"
-                               value="{{dataValues.id}}"
-                               name="id"/>
-                        <input type="submit"
+
+                    <div class="comment_form_show" id="showForm{{dataValues.id}}"
+                         onclick="showHidePostForm({{dataValues.id}})" style="display:block;">Комментировать</div>
+
+                    <div class="comment_form_show" id="hideForm{{dataValues.id}}"
+                         onclick="showHidePostForm({{dataValues.id}})" style="display:none;">Скрыть</div>
+
+                    <div class="add_comment" id="{{dataValues.id}}">
+                        <form class="add_comment_form"  method = "POST" action="/posts/comments">
+                            <div class="post_text">
+                                <textarea class="text" rows="10" cols="25" name="comText" required placeholder="Comment"></textarea>
+                                <input type="hidden" value="{{dataValues.id}}" name="postId">
+                            </div>
+
+                            <div class="com_send">
+                                <div class="inp_act">
+                                    <input type="submit" value="Comment">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="reaction">
+                        <form class="like_form" action="/posts/likes" method="post">
+                            <input type="hidden"
+                                class="like_btn" onclick="this.disabled={{stat}};"
+                                value="{{dataValues.id}}"
+                                name="id"/>
+                            <input type="submit"
+                                name="id"
+                                value="Like"
+                                onclick="this.disabled={{stat}};"/> {{dataValues.likes}}
+                        </form>
+                        <form class="dislike_form" action="/posts/likes" method="post">
+                            <input type="hidden"
+                                class="like_btn" onclick="this.disabled={{stat}};"
+                                value="{{dataValues.id}}"
+                                name="id"/>
+                            <input type="submit"
                                name="id"
-                               value="Нравится"
-                               onclick="this.disabled={{stat}};"/> {{dataValues.likes}}
-                    </form>
+                               value="Dislike"
+                               onclick="this.disabled={{stat}};"/> {{dataValues.dislikes}}
+                        </form>
+                    </div>
+
+                    <div class="show_comments" id="sCom{{dataValues.id}}"
+                         onclick="showHideComments('comments{{dataValues.id}}')" style="display:block;">Раскрыть комментарии</div>
+
+                    <div class="show_comments" id="hCom{{dataValues.id}}"
+                         onclick="showHideComments('comments{{dataValues.id}}')" style="display:none;">Скрыть комментарии</div>
+
+                    <div class="comments{{dataValues.id}}" id="{{dataValues.id}}" style="display:none;">
+                        {{#com_upto comments postId=dataValues.id com=../comments}}
+                            <p>{{dataValues.author}}</p>
+                            <p>{{dataValues.text}}</p>
+                        {{/com_upto}}
+                    </div>
             {{/each_upto}}
+
         </div>
         <div class="show_more" onclick="showMore({{n}})">Показать больше</div>
     </div>

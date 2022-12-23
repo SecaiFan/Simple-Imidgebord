@@ -7,6 +7,7 @@ router.get('/', (req,res) => {
     return res.render('index', {layout: false});
 });
 router.post('/posts/likes', postController.incLikes);
+router.post('/posts/comments', postController.addComment);
 router.use('/posts', postRouter);
 
 module.exports = router;

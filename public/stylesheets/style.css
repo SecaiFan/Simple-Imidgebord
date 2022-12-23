@@ -119,11 +119,34 @@ textarea.text {
     overflow-y: auto;
 
 }
+.posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .post {
     border: 2px solid #494949;
     border-radius: 10px;
     padding: 5px 10px 0px 5px;
 }
+/*.add_comment {
+    display: none;
+}*/
+.add_comment {
+    display: none;
+}
+.comment {
+    border: 2px solid #494949;
+    border-radius: 10px;
+    padding: 5px 10px 0px 5px;
+    background: #C7C7C7;
+}
+.reaction {
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .show_more {
     cursor:pointer;
 }
@@ -139,9 +162,29 @@ textarea.text {
 .show_more:hover {
     font-weight: bold;
 }
-.like_btn {
-
+.show_comments:hover {
+    cursor: pointer;
+    font-weight: bold;
 }
+.show_comments:focus {
+    cursor: default;
+    font-weight: bold;
+}
+.comment_form_show:focus + .add_comment{
+    display: block;
+}
+.comment_form_show:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+.comment_form_show:focus {
+    cursor: default;
+    font-weight: bold;
+}
+.dislike_form input[type="submit"]{
+    background: crimson;
+}
+
 .footer {
     bottom: 0;
     background: #494949; /* Цвет фона подвала */
@@ -154,8 +197,8 @@ textarea.text {
 input[type="submit"] {
     width: 110px;
     height: 35px;
-    border-radius: 5px;
     background: #00c225;
+    border-radius: 5px;
     color: whitesmoke;
     font: bolder 15pt Cambria;
     text-align: center;
@@ -178,6 +221,14 @@ input[type="submit"]:hover {
 }
 input[type="submit"]:focus {
     background: #1de540;
+    cursor: default;
+}
+.dislike_form input[type="submit"]:hover {
+    background: #f52347;
+    cursor: pointer;
+}
+.dislike_form input[type="submit"]:focus {
+    background: #f52347;
     cursor: default;
 }
 
